@@ -5,7 +5,6 @@ var ng_router = require('@angular/router');
 var AuthService = (function () {
     function AuthService(router) {
         this._router = router;
-        //this._state = state;
         this.isEnterPass = false;
         this.isOutPass = false;
     }
