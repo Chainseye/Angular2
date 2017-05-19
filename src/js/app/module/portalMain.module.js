@@ -10,12 +10,15 @@ var common_module = require('@angular/common');
 var http = require('@angular/http');
 
 var portalService = require('../service/portal.service');
+var authService = require('../service/auth.service');
 var utilsService = require('../service/utils.services');
 
 var portalMainRoutes = require('../route/portalMain.routes');
 
 var portalComponent = require('../component/portalMain/portalMain.component');
 var contentComponent = require('../component/content/content.component');
+var adminComponent = require('../component/admin/admin.component');
+var itemComponent = require('../component/item/item.component');
 
 var PortalMainModule = ng_core.NgModule(
     {
@@ -28,11 +31,14 @@ var PortalMainModule = ng_core.NgModule(
         ],
         declarations: [
             portalComponent.PortalMainComponent,
-            contentComponent.ContentComponent
+            contentComponent.ContentComponent,
+            adminComponent.AdminComponent,
+            itemComponent.ItemComponent
         ],
         providers: [
             portalMainRoutes.portalMainRoutingProviders,
             portalService.PortalService,
+            authService.AuthService,
             utilsService.UtilsService
         ],
         bootstrap: [

@@ -1,23 +1,6 @@
-<header>
-    <p class="pull-right" id="logout">退出</p>
-    <div class="clearfix"></div>
-</header>
-<div class="magicLens-slide">
-    <ul id="magicLens-slide-collapse">
-        <li class="collapse-li-parent">
-            <p data-toggle="collapse" data-parent="#magicLens-slide-collapse" href="#magicLens-collapse-content">内容管理<span class="glyphicon glyphicon-chevron-down"></span></p>
-            <ul id="magicLens-collapse-content" class="collapse in">
-                <li class="collapse-li-parent">
-                    <p data-toggle="collapse" data-parent="#magicLens-slide-content" href="#magicLens-collapse-item">项目管理<span class="glyphicon glyphicon-chevron-down"></span></p>
-                    <ul id="magicLens-collapse-item" class="collapse in">
-                        <li class="collapse-li-child collapse-li-contentManager" [routerLink]="['/content']"><p>项目列表</p></li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
-    </ul>
-</div>
-<div class="magicLens-content">
-    <div id="main-breadCrumb" class="breadcrumb"></div>
-    <router-outlet></router-outlet>
-</div>
+<ul>
+    <li [routerLink]="['/content']">Content</li>
+    <li [routerLink]="['/admin']">admin</li>
+    <li [routerLink]="['/content/item']">item</li>
+</ul>
+<router-outlet></router-outlet>

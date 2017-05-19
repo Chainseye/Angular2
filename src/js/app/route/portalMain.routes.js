@@ -1,14 +1,12 @@
-/**
- * Created by liph on 9/22/16.
- */
-/**
- * Created by liph on 9/16/16.
- */
 "use strict";
 
 var ng_router  = require('@angular/router');
 
 var contentComponent = require('../component/content/content.component');
+var adminComponent = require('../component/admin/admin.component');
+var itemComponent = require('../component/item/item.component');
+
+var authService = require('../service/auth.service');
 
 var PortalMainRoutes = [
     {
@@ -18,13 +16,34 @@ var PortalMainRoutes = [
     },
     {
         path: 'content',
-        component: contentComponent.ContentComponent
+        children: [
+            {
+                path: "",
+                component: contentComponent.ContentComponent
+            },
+            {
+                path: 'item',
+                component: itemComponent.ItemComponent,
+                canActivate: [authService.AuthService]
+            }
+        ]
+    },
+    {
+        path: 'admin',
+        children: [
+            {
+                path: "",
+                component: adminComponent.AdminComponent,
+                canDeactivate: [authService.AuthService]
+            }
+        ]
     },
     {
         path: '**',
         redirectTo: '/content'
     }
 ];
+
 exports.portalMainRoutingProviders = [
     ng_router.provideRoutes(PortalMainRoutes)
 ];

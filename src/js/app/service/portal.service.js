@@ -22,28 +22,7 @@ var PortalService = (function () {
     PortalService.parameters = [ng_http.Http, utilsService.UtilsService];
 
     PortalService.prototype = {
-        searchARCase: function(pageIndex, pageSize, value, type) {
-            var _this = this;
-            return _this._http.get(_this.contentUrl + "?keyword=" + value + "&channelId=" + type + "&start=" + (pageIndex - 1) * pageSize + "&count=" + pageSize + "&withTotal=1")
-                .toPromise()
-                .then(function(response) {
-                    var result = response.json();
-                    if(result.items.length != 0) {
-                        for(var i = 0; i < result.items.length; ++i) {
-                            result.items[i]["check"] = "";
-                            if(result.items.length != 0) {
-                                for(var j = 0; j < result.items[i].channels.length; ++j) {
-                                    result.items[i].channels[j]["check"] = "";
-                                }
-                            }
-                        }
-                    }
-                    return result;
-                })
-                .catch(function (response) {
-                    return _this._utils.catchException(response);
-                })
-        }
+
     };
     return PortalService;
 })();
