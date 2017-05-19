@@ -15,21 +15,7 @@ var ItemComponent =
                 this._router = router;
                 this.token = JSON.parse(cookie.Cookie.get("magicLensToken"));
             }],
-            ngOnInit:function () {
-                var _this = this;
-                _this.checkCookie();
-            },
-            checkCookie: function() {
-                var _this = this;
-                //var s = Math.floor(Math.random()*10+1);
-                //if(s > 5) {
-                //    console.log("canDeactivate: Pass" + s);
-                //    return true;
-                //} else {
-                //    console.log("canDeactivate: Not" + s);
-                //    return false;
-                //}
-            }
+            ngOnInit:function () {}
         });
 
 exports.ItemComponent = ItemComponent;
