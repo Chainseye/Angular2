@@ -3,13 +3,14 @@
 var ng_router = require('@angular/router');
 
 var AuthService = (function () {
-    function AuthService(router, state) {
+    function AuthService(router) {
         this._router = router;
-        this._state = state;
-        this.isPass = true;
+        //this._state = state;
+        this.isEnterPass = false;
+        this.isOutPass = false;
     }
 
-    AuthService.parameters = [ng_router.Router, ng_router.Router];
+    AuthService.parameters = [ng_router.Router];
 
     AuthService.prototype = {
 
@@ -17,41 +18,50 @@ var AuthService = (function () {
             var _this = this;
             return _this.switchCanActivateUrl(RouterStateSnapshot.url);
         },
-        canDeactivate: function() {
-            //var s = Math.floor(Math.random()*10+1);
-            //if(s > 5) {
-            //    console.log("canDeactivate: Pass" + s);
-            //    return true;
-            //} else {
-            //    console.log("canDeactivate: Not" + s);
-            //    return false;
-            //}
-            return true;
+        canDeactivate: function(ActivatedRouteSnapshot, RouterStateSnapshot) {
+            var _this = this;
+            return _this.switchCanDeactivateUrl(ActivatedRouteSnapshot._router.url);
         },
         switchCanActivateUrl: function(url) {
             var _this = this;
             switch (url) {
-                case "/admin":
-                    return true;
-                    break;
-                case "/content":
-                    return true;
-                    break;
                 case "/content/item":
-                    var s = Math.floor(Math.random()*10+1);
-                    if(s > 5) {
-                        console.log("canActivate: Pass" + s);
-                        return true;
-                    } else {
+                    if(!_this.isEnterPass) {
+                        alert("item not enter, jump to content");
                         _this._router.navigate(["/content"]);
-                        console.log("canActivate: Not" + s);
-                        return false;
                     }
+                    return _this.isEnterPass;
                     break;
             }
+        },
+        switchCanDeactivateUrl: function(url) {
+            var _this = this;
+            switch (url) {
+                case "/admin":
+                    if(!_this.isOutPass) {
+                        alert("admin not leave");
+                    }
+                    return _this.isOutPass;
+                    break;
+            }
+        },
+        toggleActivatePass: function(status) {
+            var _this = this;
+            if(status == "pass") {
+                _this.isEnterPass = true;
+            } else {
+                _this.isEnterPass = false;
+            }
+        },
+        toggleDeactivatePass: function(status) {
+            var _this = this;
+            if(status == "pass") {
+                _this.isOutPass = true;
+            } else {
+                _this.isOutPass = false;
+            }
         }
-    }
-    ;
+    };
     return AuthService;
 })();
 

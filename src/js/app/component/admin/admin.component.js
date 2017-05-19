@@ -3,18 +3,24 @@
 var ng_core = require('@angular/core');
 var ng_router = require('@angular/router');
 
-var cookie = require('ng2-cookies/ng2-cookies');
+var authService = require('../../service/auth.service');
 
 var AdminComponent =
     ng_core.Component({
             selector: '',
-            template: '<pre style="width: 50%;">Admin</pre>'
-        })
+            templateUrl: 'src/js/app/component/admin/admin.component.html'
+    })
         .Class({
-            constructor:[ ng_router.Router, function (router) {
+            constructor:[ ng_router.Router, authService.AuthService, function (router, authService) {
                 this._router = router;
+                this._authService = authService;
             }],
-            ngOnInit:function () {}
+            ngOnInit:function () {},
+            toggle: function() {
+                var _this = this;
+                var status = $("#out").val();
+                _this._authService.toggleDeactivatePass(status);
+            }
         });
 
 exports.AdminComponent = AdminComponent;

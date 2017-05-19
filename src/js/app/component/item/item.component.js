@@ -8,7 +8,7 @@ var cookie = require('ng2-cookies/ng2-cookies');
 var ItemComponent =
     ng_core.Component({
             selector: '',
-            template: '<pre style="40%;">Item</pre>'
+            templateUrl: 'src/js/app/component/item/item.component.html'
         })
         .Class({
             constructor:[ ng_router.Router, function (router) {

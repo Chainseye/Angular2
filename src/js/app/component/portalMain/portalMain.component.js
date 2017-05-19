@@ -18,12 +18,8 @@ var PortalMainComponent =
         constructor: [ng_router.Router, portalService.PortalService, function(router, portalService) {
             this._router = router;
             this._portalService = portalService;
-            this.str = "Success";
         }],
-        ngOnInit: function() {
-            var _this = this;
-            console.log("portal: " + _this.str);
-        }
+        ngOnInit: function() {}
     });
 
 exports.PortalMainComponent = PortalMainComponent;
