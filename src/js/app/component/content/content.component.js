@@ -17,6 +17,7 @@ var ContentComponent =
             constructor:[ ng_router.Router, authService.AuthService, function (router, authService) {
                     this._router = router;
                     this._authService = authService;
+                    this.pass = "";
             }],
             ngOnInit:function () {},
             toggle: function() {
