@@ -12,7 +12,7 @@ var CheckNullPipe =
         constructor: function() {},
         transform: function(vale, args) {
             var result = "";
-            (vale == "") ? (result = "无信息"):(result = vale);
+            (vale == "")?(result = "无信息"):(result = vale);
             return result;
         }
     });
