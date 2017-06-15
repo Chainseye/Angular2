@@ -20,6 +20,8 @@ var contentComponent = require('../component/content/content.component');
 var adminComponent = require('../component/admin/admin.component');
 var itemComponent = require('../component/item/item.component');
 
+var checkNullPipe = require('../pipe/checkNull.pipe');
+
 var PortalMainModule = ng_core.NgModule(
     {
         imports: [
@@ -33,7 +35,8 @@ var PortalMainModule = ng_core.NgModule(
             portalComponent.PortalMainComponent,
             contentComponent.ContentComponent,
             adminComponent.AdminComponent,
-            itemComponent.ItemComponent
+            itemComponent.ItemComponent,
+            checkNullPipe.CheckNullPipe
         ],
         providers: [
             portalMainRoutes.portalMainRoutingProviders,

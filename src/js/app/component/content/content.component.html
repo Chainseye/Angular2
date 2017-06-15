@@ -6,8 +6,4 @@ This is Content!
 </pre>
 <input id="enter" type="text"  [(ngModel)]="pass"/>
 <button (click)="toggle()">toggle</button>
-<pre style="width: 50%;">
-    {{pass}}
-    <span *ngIf="pass != 'pass'">&times;</span>
-    <span *ngIf="pass == 'pass'">&radic;</span>
-</pre>
+<pre style="width: 50%;">{{pass}}<span *ngIf="pass != 'pass'">&times;</span><span *ngIf="pass == 'pass'">&radic;</span></pre>
