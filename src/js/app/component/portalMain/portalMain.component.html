@@ -5,11 +5,18 @@
 </ul>
 <div class="panel">
     <table>
+        <tr>
+            <td>1</td>
+            <td>{{ text }}</td>
+            <td>{{ text | checkNull }}</td>
+        </tr>
         <tr *ngFor="let d of data; let i = index">
-            <td>{{ i }}</td>
+            <td>{{ i + 2 }}</td>
             <td>{{ d.data }}</td>
             <td>{{ d.data | checkNull }}</td>
         </tr>
     </table>
+    <input type="text" [(ngModel)]="text"/>
+    <pre style="width: 50%;">pipe中如果pure:true只有text改变时触发；反之，任何组件操作，比如跳转或者在其它input框中赋值时都会触发。</pre>
 </div>
 <router-outlet></router-outlet>

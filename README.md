@@ -4,4 +4,6 @@
     
     router-auth
     ngFor-index
+    ngModel
+    ngIf
     pipe-custom

@@ -20,6 +20,7 @@ var PortalMainComponent =
             this._router = router;
             this._portalService = portalService;
             this.data = [{"data": ""}, {"data": "bb"}];
+            this.text = "text";
         }],
         ngOnInit: function() {}
     });
